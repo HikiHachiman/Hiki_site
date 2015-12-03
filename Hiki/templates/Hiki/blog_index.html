@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="zh">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Hiki_Joy</title>
+	<link rel="stylesheet" href="/static/css/blog.css" type="text/css">
+</head>
+<body>
+  
+  <div class="container">
+    
+    <div class="header">
+       <div id="top">
+       	  <a href="/blog/"><img src="" alt="Logo"></a>
+       	  <div id="top_div">
+       	    <ul id="top_nav">
+       	    	<li><a href="/">首页</a></li>
+       	    	<li><a href="#">门庭</a></li>
+       	    	<li><a href="#">关于</a></li>
+       	    </ul>
+       	  </div>
+       </div>	
+    </div><!--end .header-->
+    
+    <div class="content_body">
+      <div class="main_body">
+        {% for blog in blogs %}
+        <div class="blog_body">
+            
+            <div class="blog_title">
+            	<a href="/detail/?id={{ blog.id }}"></a>
+            </div>
+            <div class="blog_info1">
+              <span class="info-1">分类: <a href="#">blog.classification</a></span>
+          	  <span class="info-1">发布时间：{{ blog.pub_date|date:"Y-m-d H:i" }}</span>
+            </div>
+            <div class="splitline"> </div>
+            <div class="blog_description">{{ blog.content }}</div>
+            <div class="blog_info2">
+            	<span class="info-2">标签：{% for tag in blog.tags.all %}<a href="#">{{ tag.tag_name }</a>{% endfor %}</span>
+            </div>
+         </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="footer">
+    	<div id="footer_logo"></div>
+    	<div id="site-info">&copy; 2014-20?? HikiJoy Project</div>
+    </div><!--end .footer-->
+  	
+  </div><!--end .container-->
+</body>
+</html>
